@@ -1,3 +1,8 @@
 @import url(../dist/bower_components/bootstrap/dist/css/bootstrap.css);
+.ng-invalid.ng-dirty {
+  border-color: red; }
+
+.ng-valid.ng-dirty {
+  border-color: green; }
 
 /*# sourceMappingURL=main.css.map */
