@@ -1,0 +1,25 @@
+{
+  "name": "gemstore",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Connor Dodge"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/cdodge89/GemStore",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.2",
+    "angular": "^1.5.3"
+  }
+}
