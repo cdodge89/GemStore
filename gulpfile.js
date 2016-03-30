@@ -13,7 +13,7 @@ cleanCss = require('gulp-clean-css');
         'dist/bower_components/jquery/dist/jquery.js',
         'dist/bower_components/boostrap/dist/js/boostrap.js',
         'dist/bower_components/angular/angular.js',
-        'js/main.js'
+        'js/*.js'
         ])
     .pipe(maps.init())
     .pipe(concat('app.js'))
@@ -52,13 +52,23 @@ cleanCss = require('gulp-clean-css');
  		.pipe(gulp.dest('dist'));
  });
 
+ gulp.task('copyJson', function(){
+  return gulp.src('js/*.json')
+    .pipe(gulp.dest('dist'));
+ });
+
+  gulp.task('copyImages', function(){
+  return gulp.src('images/*.gif')
+    .pipe(gulp.dest('dist/images'));
+ });
+
  gulp.task('watchFiles', function() {
   gulp.watch('src/scss/*.scss', ['compileSass']);
   gulp.watch('js/main.js', ['concatScripts']);
   gulp.watch('src/index.html', ['copyIndex']);
 });
 
- gulp.task('serve', ['watchFiles', 'compileSass', 'concatScripts', 'copyIndex', 'copyViews'], function(){
+ gulp.task('serve', ['watchFiles', 'compileSass', 'concatScripts', 'copyIndex', 'copyViews', 'copyJson', 'copyImages'], function(){
  	gulp.src('dist/index.html')
  		.pipe(open({app: 'chrome'}));
  });
@@ -70,3 +80,5 @@ cleanCss = require('gulp-clean-css');
  });
 
  gulp.task('deploy', ['minifyScripts', 'minifyCss', 'copyIndex', 'copyViews']);
+ //in the future, use the base option (see treehouse example) to preserve my filestructure in the dist folder
+ //also, I probably want to get rid of the open a new tab thing, so that I can just refresh my localhost:3000 page
